@@ -1,0 +1,44 @@
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import joblib
+
+from sklearn.model_selection import train_test_split
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    roc_auc_score,
+    classification_report,
+    confusion_matrix,
+    ConfusionMatrixDisplay,
+    RocCurveDisplay
+)
+from sklearn.feature_selection import mutual_info_classif
+
+RANDOM_STATE = 42
+
+# Load Adult Income dataset
+df = pd.read_csv("adult.csv")
+
+print("Dataset shape:", df.shape)
+display(df.head())
+
+Define the target:
+
+target = "income"
+
+X = df.drop(columns=[target])
+y = df[target]
+
+# Convert target to binary
+y = y.str.strip().str.replace(".", "", regex=False)
+
+print(y.value_counts())
