@@ -1,0 +1,5 @@
+X = df.drop(columns="income")
+y = df["income"]
+
+print("Feature shape:", X.shape)
+print("Target shape:", y.shape)
