@@ -1,0 +1,14 @@
+numerical_features = X_train.select_dtypes(
+    include=["int64", "float64"]
+).columns.tolist()
+
+categorical_features = X_train.select_dtypes(
+    include=["object"]
+).columns.tolist()
+
+print("Numerical features:")
+print(numerical_features)
+
+print("\nCategorical features:")
+print(categorical_features)
+
