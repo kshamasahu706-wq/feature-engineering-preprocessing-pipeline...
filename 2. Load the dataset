@@ -1,3 +1,5 @@
+The prediction target is whether an individual's income is above $50K.
+
 # ============================================
 # Load Dataset
 # ============================================
