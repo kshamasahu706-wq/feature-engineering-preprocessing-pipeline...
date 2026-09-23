@@ -1,0 +1,18 @@
+The target contains values such as:
+
+<=50K
+>50K
+
+Remove whitespace and convert it to a binary target.
+
+# Remove whitespace
+df["income"] = df["income"].str.strip()
+
+# Convert target to binary
+df["income"] = df["income"].map({
+    "<=50K": 0,
+    ">50K": 1
+})
+
+print(df["income"].value_counts())
+
