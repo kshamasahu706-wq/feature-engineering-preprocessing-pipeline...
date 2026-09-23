@@ -1,0 +1,27 @@
+Numerical pipeline
+numerical_pipeline = Pipeline(
+    steps=[
+        ("imputer", SimpleImputer(strategy="median")),
+        ("scaler", StandardScaler())
+    ]
+)
+
+Categorical pipeline
+categorical_pipeline = Pipeline(
+    steps=[
+        ("imputer", SimpleImputer(strategy="most_frequent")),
+        (
+            "onehot",
+            OneHotEncoder(
+                handle_unknown="ignore",
+                sparse_output=False
+            )
+        )
+    ]
+)
+
+The result is:
+
+Numerical → Median Imputation → StandardScaler
+Categorical → Most-Frequent Imputation → One-Hot Encoding
+
