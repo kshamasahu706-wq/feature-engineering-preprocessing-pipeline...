@@ -1,0 +1,26 @@
+print("Dataset shape:", df.shape)
+
+print("\nColumn names:")
+print(df.columns.tolist())
+
+print("\nData types:")
+print(df.dtypes)
+
+print("\nFirst five rows:")
+display(df.head())
+
+
+
+Check the target distribution:
+
+
+print("Target distribution:")
+print(df["income"].value_counts())
+
+print("\nTarget percentages:")
+print(
+    df["income"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .round(2)
+)
