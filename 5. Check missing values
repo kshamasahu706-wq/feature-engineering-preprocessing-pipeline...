@@ -1,0 +1,38 @@
+missing = (
+    df.isnull()
+    .sum()
+    .sort_values(ascending=False)
+)
+
+missing_percentage = (
+    df.isnull()
+    .mean()
+    .mul(100)
+    .sort_values(ascending=False)
+)
+
+missing_summary = pd.DataFrame({
+    "missing_count": missing,
+    "missing_percentage": missing_percentage
+})
+
+missing_summary[missing_summary["missing_count"] > 0]
+
+Visualize missing values:
+
+plt.figure(figsize=(10, 6))
+
+missing_plot = missing_percentage[
+    missing_percentage > 0
+].sort_values(ascending=False)
+
+sns.barplot(
+    x=missing_plot.values,
+    y=missing_plot.index
+)
+
+plt.title("Missing Values by Feature")
+plt.xlabel("Missing Percentage (%)")
+plt.ylabel("Feature")
+plt.tight_layout()
+plt.show()
