@@ -1,0 +1,15 @@
+This is the most important leakage-prevention step i make...
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.20,
+    random_state=RANDOM_STATE,
+    stratify=y
+)
+
+print("Training set:", X_train.shape)
+print("Testing set :", X_test.shape)
+
+Important: Do not fit the imputer, scaler, encoder, correlation transformation, or feature selector before this split.
+
