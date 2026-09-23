@@ -1,0 +1,40 @@
+preprocessor = ColumnTransformer(
+    transformers=[
+        (
+            "numerical",
+            numerical_pipeline,
+            numerical_features
+        ),
+        (
+            "categorical",
+            categorical_pipeline,
+            categorical_features
+        )
+    ],
+    remainder="drop"
+)
+
+Create the model:
+
+model = RandomForestClassifier(
+    n_estimators=300,
+    min_samples_split=5,
+    min_samples_leaf=2,
+    class_weight="balanced",
+    random_state=RANDOM_STATE,
+    n_jobs=-1
+)
+
+Combine everything:
+
+model_pipeline = Pipeline(
+    steps=[
+        ("preprocessor", preprocessor),
+        ("model", model)
+    ]
+)
+
+print(model_pipeline)
+
+This is the main reusable machine-learning pipeline.
+
